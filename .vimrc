@@ -77,3 +77,12 @@ au FocusLost * :wa
 " I apparently like dark backgrounds
 set background=dark
 
+" Programming helpful stuff
+runtime ftplugin/man.vim
+
+" Where VIM should search for files
+set path =.,..,/usr/include**,/usr/share/**
+
+" Spell checking
+set spelllang=en_us
+
