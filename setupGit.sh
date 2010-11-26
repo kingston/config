@@ -13,8 +13,13 @@ fi
 git config --global user.name "$1"
 git config --global user.email "$2"
 
-# Reassign checkout
+# Create alias shortcuts
 git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.lc "log ORIG_HEAD.. --stat --no-merges"
+git config --global alias.changes "diff --name-status -r"
+git config --global alias.diffstat "diff --stat -r"
+git config --global alias.llog "log --date=local"
 
 git config --global core.editor "vim"
 
