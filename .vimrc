@@ -4,6 +4,9 @@ filetype plugin indent on
 
 set nocompatible
 
+" Mouse Configuration
+set mouse=a
+
 " Tab Configuration
 set tabstop=4
 set shiftwidth=4
@@ -67,6 +70,8 @@ nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
 nnoremap ; :
+
+set pastetoggle=<F2>
 
 " Use "jj" instead of pressing <ESC>
 inoremap jj <ESC>
