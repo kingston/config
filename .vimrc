@@ -88,3 +88,5 @@ runtime ftplugin/man.vim
 " Spell checking
 set spelllang=en_us
 
+" NERDTree Bindings
+map <F2> :NERDTreeToggle<CR>

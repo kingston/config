@@ -1,0 +1,5 @@
+
+# .bashrc customizations from the setup script
+
+alias s="~/scripts/search.sh"
+alias si="~/scripts/searchi.sh"
