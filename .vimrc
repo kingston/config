@@ -47,7 +47,6 @@ nnoremap / /\v
 vnoremap / /\v
 set ignorecase
 set smartcase
-set gdefault
 set incsearch
 set hlsearch
 " Type ", " to remove highlighting
