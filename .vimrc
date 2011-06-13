@@ -1,3 +1,6 @@
+" Pathogen
+call pathogen#runtime_append_all_bundles()
+
 " Filetype Configuration
 filetype on
 filetype plugin indent on
@@ -8,9 +11,9 @@ set nocompatible
 set mouse=a
 
 " Tab Configuration
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 
 set autoindent
@@ -89,3 +92,14 @@ set spelllang=en_us
 
 " NERDTree Bindings
 map <F2> :NERDTreeToggle<CR>
+
+" Vundle
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Bundles:
+Bundle 'tpope/vim-pathogen'
+Bundle 'tpope/vim-fugitive'
+
+Bundle 'NERD_tree'
+Bundle 'git://git.wincnet.com/command-t.git'

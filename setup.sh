@@ -13,14 +13,11 @@ cp ./.vimrc ~/.vimrc
 echo "Successfully copied .vimrc to local copy"
 echo ""
 
-echo "Installing NERDTree to vim directory"
-echo "(It might be a good idea to check whether you are downloading the latest version - currently at 4.1.0)"
+echo "Installing Vundle"
 
-wget http://www.vim.org/scripts/download_script.php?src_id=11834 -O nerdtree.zip
-unzip nerdtree.zip -d ~/.vim
-rm -f nerdtree.zip
+git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
-echo "NERDTree sucessfully installed!"
+echo "Vundle installed!"
 echo ""
 
 echo "Setting up scripts directory"
@@ -44,3 +41,4 @@ echo ""
 
 echo "Done setting up!"
 echo "Remember to run setupGit.sh if you want to set up Git as well"
+echo "Also remember to run vim, and :BundleInstall to install plugins"
