@@ -84,10 +84,11 @@ fi
 echo ".bashrc successfully set up!"
 echo ""
 
-if [ -f setup.cfg ]; then
-    source setup.cfg
+SETUP_CFG=`dirname $0`/setup.cfg
+if [ -f $SETUP_CFG ]; then
+    source $SETUP_CFG
     echo "Setting up Git..."
-    ./setupGit.sh $GIT_NAME $GIT_EMAIL
+    `dirname $0`/setupGit.sh $GIT_NAME $GIT_EMAIL
     echo "Git setup!"
 else
     echo "No configuration file (setup.cfg) found.  Please set up Git manually."
