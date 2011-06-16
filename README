@@ -1,0 +1,16 @@
+A highly opinionated configuration setup
+
+Just a collection of handy configuration settings I've found over the years, collated into one simple setup script
+
+To get everything started, do the following:
+1) Copy setup.cfg.template to setup.cfg
+2) Configure setup.cfg accordingly
+3) Run ./setup.sh
+
+If anything gets updated:
+1) Run ./setup.sh again
+
+Of course, this stuff is as-is and I'm just using it for myself, i.e. it's not meant for distribution.  Just figured I'd leave it up.
+
+If you do want to play around, I'd modify the vim bundles.  They are a tad customzied for myself.
+

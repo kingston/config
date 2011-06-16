@@ -3,6 +3,8 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " Bundles
+Bundle 'gmarik/vundle'
+
 Bundle 'tpope/vim-rails'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'vim-scripts/JavaScript-Indent'

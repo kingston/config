@@ -1,0 +1,7 @@
+# Configuration for setup script
+# Version 1
+#
+# Just rename to setup.cfg.template to setup.cfg to get going with it
+
+GIT_NAME=
+GIT_EMAIL=
