@@ -1,3 +1,8 @@
+# Add bash completion
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+
 # Add search additions
 
 alias s="~/scripts/common/search.sh"
