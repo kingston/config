@@ -53,14 +53,14 @@ if [ ! -d ~/scripts ]; then
     mkdir ~/scripts
 fi
 
+if [ -L ~/scripts/common ]; then
+    echo "Existing scripts link detected.  Removing now..."
+    rm -f ~/scripts/common
+fi
+
 if [ -d ~/scripts/common ]; then
-    if [ -L ~/scripts/common ]; then
-        echo "Existing scripts link detected.  Removing now..."
-        rm -f ~/scripts/common
-    else
-        echo "Existing scripts common folder detected.  Stopping now."
-        exit 1
-    fi
+    echo "Existing scripts common folder detected.  Stopping now."
+    exit 1
 fi
 
 ln -s $SCRIPT_DIR/scripts ~/scripts/common
