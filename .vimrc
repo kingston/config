@@ -1,5 +1,18 @@
-" Pathogen
-call pathogen#runtime_append_all_bundles()
+" Vundle
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Bundles
+Bundle 'tpope/vim-rails'
+Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'vim-scripts/JavaScript-Indent'
+
+Bundle 'Lokaltog/vim-easymotion'
+
+Bundle 'altercation/vim-colors-solarized'
+
+Bundle 'scrooloose/nerdtree'
+Bundle 'git://git.wincent.com/command-t.git'
 
 " Filetype Configuration
 filetype on
@@ -11,13 +24,14 @@ set nocompatible
 set mouse=a
 
 " Tab Configuration
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 
 set autoindent
 set encoding=utf-8
+
 " Display stuff
 " Sets how much to show above and below the cursor
 set scrolloff=3
@@ -57,6 +71,9 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 nnoremap <tab> %
 
+" EasyMotion
+let g:EasyMotion_leader_key = 'q'
+
 " Wrapping
 set wrap
 set textwidth=79
@@ -84,6 +101,12 @@ au FocusLost * :wa
 " I apparently like dark backgrounds
 set background=dark
 
+" Color syntax highlighting
+syntax on
+
+" Solarized palette
+colorscheme solarized
+
 " Programming helpful stuff
 runtime ftplugin/man.vim
 
@@ -93,13 +116,3 @@ set spelllang=en_us
 " NERDTree Bindings
 map <F2> :NERDTreeToggle<CR>
 
-" Vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" Bundles:
-Bundle 'tpope/vim-pathogen'
-Bundle 'tpope/vim-fugitive'
-
-Bundle 'NERD_tree'
-Bundle 'git://git.wincnet.com/command-t.git'
