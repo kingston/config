@@ -1,3 +1,6 @@
+# Ignore duplicate commands, invocation of 'ls', and shell built-ins in bash history
+export HISTIGNORE="&:ls:[bf]g:exit"
+
 # Add bash completion
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
