@@ -119,3 +119,8 @@ set spelllang=en_us
 " NERDTree Bindings
 map <F2> :NERDTreeToggle<CR>
 
+" Source local settings
+if filereadable($HOME . '/.local.vimrc')
+    source ~/.local.vimrc
+endif
+
