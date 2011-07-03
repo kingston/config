@@ -16,6 +16,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
 Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'sjbach/lusty'
 
 " Filetype Configuration
 filetype on
