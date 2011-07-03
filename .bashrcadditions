@@ -1,3 +1,13 @@
+# TMux additions (add manually to .bashrc if you want them)
+# alias tmux="tmux -2"
+
+if [ -n "${SHOW_TMUX_WARNING+x}" ]; then
+    echo "Warning: This instance is not running in a tmux instance!"
+    echo "If you wish to do so, run tmux."
+fi
+
+alias m="~/scripts/common/tmuxer.sh"
+
 # Ignore duplicate commands, invocation of 'ls', and shell built-ins in bash history
 export HISTIGNORE="&:ls:[bf]g:exit"
 
