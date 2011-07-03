@@ -5,7 +5,7 @@
 
 # 2 - attached, 1 - detached, 0 - doesn't exist
 function getStatus {
-    local ATTACH_TEST=`tmux list-sessions |& grep ^$1:`
+    local ATTACH_TEST=`tmux list-sessions 2>&1 | grep ^$1:`
     if [ "$ATTACH_TEST" = "" ]; then
         return 0
     else
