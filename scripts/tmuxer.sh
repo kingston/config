@@ -20,9 +20,9 @@ function getStatus {
 
 function runTmux {
     if [ "$1" -eq "0" ]; then
-        tmux
+        env --unset=SHOW_TMUX_WARNING tmux
     else
-        tmux attach -t $2
+        env --unset=SHOW_TMUX_WARNING tmux attach -t $2
     fi
     exit 0
 }
