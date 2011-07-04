@@ -31,7 +31,7 @@ function runIfDetached {
     getStatus $1
     local STATUS=$?
     if [ "$STATUS" -eq "1" ]; then
-        runTmux $STATUS $2
+        runTmux $STATUS $1
     fi
     return 0
 }
