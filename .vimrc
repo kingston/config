@@ -8,6 +8,9 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-rails'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'vim-scripts/JavaScript-Indent'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'ervandew/supertab'
+Bundle 'AutoComplPop'
 
 Bundle 'Lokaltog/vim-easymotion'
 
