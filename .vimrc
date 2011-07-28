@@ -38,6 +38,9 @@ set expandtab
 set autoindent
 set encoding=utf-8
 
+" CTags
+set tags=tags;/
+
 " Display stuff
 " Sets how much to show above and below the cursor
 set scrolloff=3
