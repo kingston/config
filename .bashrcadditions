@@ -21,3 +21,7 @@ fi
 alias s="~/scripts/common/search.sh"
 alias si="~/scripts/common/searchi.sh"
 
+# Opening up vim additions
+
+alias vc="~/scripts/common/vcur.sh"
+alias v="~/scripts/common/vlc.sh"
