@@ -17,8 +17,10 @@ Bundle 'altercation/vim-colors-solarized'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
-Bundle 'git://git.wincent.com/command-t.git'
-Bundle 'sjbach/lusty'
+if version >= 703
+  Bundle 'git://git.wincent.com/command-t.git'
+  Bundle 'sjbach/lusty'
+endif
 
 " Filetype Configuration
 filetype on
@@ -124,6 +126,30 @@ set spelllang=en_us
 
 " NERDTree Bindings
 map <F2> :NERDTreeToggle<CR>
+
+" bind "gb" to "git blame" for visual and normal mode.
+vmap gb :<C-U>!git blame % -L<C-R>=line("'<") <CR>,<C-R>=line("'>") <CR><CR>
+nmap gb :Gblame<CR>
+nmap gl :Glog<CR>
+nmap gd :Gdiff<CR>
+
+" CD into current directory - we'll see how well this works...
+"   Edit another file in the same directory as the current file
+"   uses expression to extract path from current file's path
+"  (thanks Douglas Potts)
+if has("unix")
+    map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+else
+    map <leader>e :e <C-R>=expand("%:p:h") . "\" <CR>
+endif
+
+" CD into current directory
+
+if has("unix")
+    map <leader>y :!cp <C-R>=expand("%") <CR> <C-R>=expand("%:p:h") . "/" <CR>
+else
+    map <leader>y :!cp <C-R>=expand("%") <CR> <C-R>=expand("%:p:h") . "\" <CR>
+endif
 
 " Source local settings
 if filereadable($HOME . '/.local.vimrc')
