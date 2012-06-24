@@ -6,7 +6,9 @@ if [ -n "${SHOW_TMUX_WARNING+x}" ]; then
     echo "If you wish to do so, run tmux."
 fi
 
+# TMux shortcut scripts
 alias m="~/scripts/common/tmuxer.sh"
+alias j="~/scripts/common/untmux.sh"
 
 # Ignore duplicate commands, invocation of 'ls', and shell built-ins in bash history
 export HISTIGNORE="&:ls:[bf]g:exit"
@@ -25,3 +27,15 @@ alias si="~/scripts/common/searchi.sh"
 
 alias vc="~/scripts/common/vcur.sh"
 alias v="~/scripts/common/vlc.sh"
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi

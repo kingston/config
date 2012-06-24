@@ -37,6 +37,9 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+" Set exception for ruby which has 2 spaces
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
 set autoindent
 set encoding=utf-8
 
