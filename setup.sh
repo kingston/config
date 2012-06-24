@@ -84,6 +84,26 @@ fi
 echo ".bashrc successfully set up!"
 echo ""
 
+echo "Linking .inputrc..."
+
+if [ -L ~/.inputrc ]; then
+    echo "Existing .inputrc link detected pointing to:"
+    echo "`readlink -f ~/.inputrc`"
+    echo "Removing link..."
+    rm -f ~/.inputrc
+    echo "Link removed!"
+fi
+
+if [ -e ~/.inputrc ]; then
+    echo ".inputrc already exists - renaming to .inputrc.bak"
+    mv ~/.inputrc ~/.inputrc.bak
+fi
+
+ln -s $SCRIPT_DIR/.inputrc ~/.inputrc
+
+echo "Successfully linked .inputrc!"
+echo ""
+
 SETUP_CFG=`dirname $0`/setup.cfg
 if [ -f $SETUP_CFG ]; then
     source $SETUP_CFG
