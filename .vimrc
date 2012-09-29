@@ -17,6 +17,9 @@ Bundle 'altercation/vim-colors-solarized'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
+
+Bundle 'kchmck/vim-coffee-script'
+
 if version >= 703
   Bundle 'git://git.wincent.com/command-t.git'
   Bundle 'sjbach/lusty'
