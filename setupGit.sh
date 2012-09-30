@@ -4,6 +4,9 @@
 
 EXPECTED_ARGS=2
 
+ABS_PATH=$(cd ${0%/*} && echo $PWD/${0##*/})
+SCRIPT_DIR=`dirname "$ABS_PATH"`
+
 if [ $# -ne $EXPECTED_ARGS ]; then
     echo Usage: $0 username email
     exit $E_BADARGS
@@ -23,5 +26,8 @@ git config --global alias.type "cat-file -t"
 git config --global alias.dump "cat-file -p"
 
 git config --global core.editor "vim"
+
+git config --global core.excludesfile ~/.global_ignore
+ln -s $SCRIPT_DIR/.global_ignore ~/.global_ignore
 
 echo "Successfully updated Git settings"
