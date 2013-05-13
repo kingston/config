@@ -2,7 +2,7 @@
 # Configures a rails application for development/production
 # see http://blog.kingstontam.com/2011/06/07/setting-up-a-rails-app/
 require 'fileutils'
-require 'SecureRandom'
+require 'securerandom'
 require 'optparse'
 require 'net/http'
 include FileUtils
