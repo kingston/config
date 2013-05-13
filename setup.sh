@@ -3,6 +3,9 @@
 # DESCRIPTION: Sets up the home environment to be nice and homely :)
 # NOTE: This script should be able to run repeatedly without overwriting any settings 
 
+# abort on first failure
+set -e
+
 # Set up environmnet
 
 ABS_PATH=$(cd ${0%/*} && echo $PWD/${0##*/})
@@ -43,7 +46,7 @@ echo ""
 
 echo "Installing Vundle plugins..."
 
-vim -e -c ":BundleInstall" -c ":quit"
+vim "+source ~/.vimrc" +BundleInstall +qall
 
 echo "Vundle plugins successfully installed!"
 

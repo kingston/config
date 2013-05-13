@@ -20,6 +20,10 @@ Bundle 'scrooloose/nerdtree'
 
 Bundle 'kchmck/vim-coffee-script'
 
+Bundle 'rodjek/vim-puppet'
+
+Bundle 'nono/vim-handlebars'
+
 if version >= 703
   Bundle 'git://git.wincent.com/command-t.git'
   Bundle 'sjbach/lusty'
