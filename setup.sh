@@ -46,7 +46,7 @@ echo ""
 
 echo "Installing Vundle plugins..."
 
-vim "+source ~/.vimrc" +BundleInstall +qall
+vim +BundleInstall +qall
 
 echo "Vundle plugins successfully installed!"
 
