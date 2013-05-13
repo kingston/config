@@ -126,7 +126,7 @@ set background=dark
 syntax on
 
 " Solarized palette
-colorscheme solarized
+silent! colorscheme solarized
 
 " Programming helpful stuff
 runtime ftplugin/man.vim
