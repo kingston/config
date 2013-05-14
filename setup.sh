@@ -73,6 +73,8 @@ echo ""
 
 echo "Setting up .bashrc..."
 
+touch ~/.bashrc
+
 # Check if the .bashrc file already contains the source line
 BASHRCLINE=`grep "Scripts configuration" ~/.bashrc`
 
