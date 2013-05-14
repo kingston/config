@@ -76,7 +76,7 @@ echo "Setting up .bashrc..."
 touch ~/.bashrc
 
 # Check if the .bashrc file already contains the source line
-BASHRCLINE=`grep "Scripts configuration" ~/.bashrc`
+BASHRCLINE=`grep "Scripts configuration" ~/.bashrc || true`
 
 if [ "$BASHRCLINE" != "" ]; then
     echo "Skipping .bashrc setup - configuration already detected"
