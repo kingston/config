@@ -17,10 +17,15 @@ git config --global user.name "$1"
 git config --global user.email "$2"
 
 # Create alias shortcuts
+git config --global alias.ap add -p
 git config --global alias.co checkout
+git config --global alias.cob checkout -b
+git config --global alias.fe fetch -p
 git config --global alias.ci commit
-git config --global alias.st status
+git config --global alias.st status -sb
 git config --global alias.br branch
+git config --global alias.bd branch -d
+git config --global alias.bdm "branch --merged | grep -v '*' | xargs -n 1 git branch -d"
 git config --global alias.hist "log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short"
 git config --global alias.type "cat-file -t"
 git config --global alias.dump "cat-file -p"
