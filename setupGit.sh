@@ -17,6 +17,8 @@ git config --global user.name "$1"
 git config --global user.email "$2"
 
 # Create alias shortcuts
+git config --global --remove-section alias
+
 git config --global alias.ap add -p
 git config --global alias.co checkout
 git config --global alias.cob checkout -b
