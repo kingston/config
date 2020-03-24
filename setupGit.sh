@@ -38,6 +38,11 @@ git config --global alias.dump "cat-file -p"
 git config --global core.editor "vim"
 
 git config --global core.excludesfile ~/.global_ignore
+
+
+if [ -L ~/.global_ignore ]; then
+    rm -f ~/.global_ignore
+fi
 ln -s $SCRIPT_DIR/.global_ignore ~/.global_ignore
 
 echo "Successfully updated Git settings"
