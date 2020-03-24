@@ -2,19 +2,21 @@
 
 # Parameter checking
 
-EXPECTED_ARGS=2
+USERNAME_ARGS_NUMBER=2
 
 ABS_PATH=$(cd ${0%/*} && echo $PWD/${0##*/})
 SCRIPT_DIR=`dirname "$ABS_PATH"`
 
-if [ $# -ne $EXPECTED_ARGS ]; then
-    echo Usage: $0 username email
+if [ $# -ne $USERNAME_ARGS_NUMBER ] && [ $# -ne 0 ]; then
+    echo Usage: $0 [username] [email]
     exit $E_BADARGS
 fi
 
 # Sets up Git
-git config --global user.name "$1"
-git config --global user.email "$2"
+if [ $# == $USERNAME_ARGS_NUMBER ]; then
+    git config --global user.name "$1"
+    git config --global user.email "$2"
+fi
 
 # Create alias shortcuts
 git config --global --remove-section alias
