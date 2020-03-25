@@ -113,7 +113,7 @@ echo "Linking .inputrc..."
 
 if [ -L ~/.inputrc ]; then
     echo "Existing .inputrc link detected pointing to:"
-    echo "`readlink -f ~/.inputrc`"
+    echo "`readlink ~/.inputrc`"
     echo "Removing link..."
     rm -f ~/.inputrc
     echo "Link removed!"
