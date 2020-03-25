@@ -137,7 +137,7 @@ else
 fi
 
 echo "Checking if any zsh plugins needs install..."
-zsh -i -c exit
+POWERLEVEL9K_DISABLE_INSTANT_PROMPT=true zsh -i -c exit
 
 
 echo "Setting up .bashrc..."
