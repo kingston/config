@@ -34,6 +34,7 @@ git config --global alias.hist "log --pretty=format:\"%h %ad | %s%d [%an]\" --gr
 git config --global alias.uc "reset --soft HEAD~1"
 git config --global alias.type "cat-file -t"
 git config --global alias.dump "cat-file -p"
+git config --global alias.pr "push origin HEAD"
 
 git config --global core.editor "vim"
 
