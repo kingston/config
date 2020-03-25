@@ -15,6 +15,28 @@ command_exists() {
 	command -v "$@" >/dev/null 2>&1
 }
 
+link_to_home() {
+    echo "Linking $@..."
+
+    if [ -L ~/$@ ]; then
+        echo "Existing $@ link detected pointing to:"
+        echo "`readlink ~/$@`"
+        echo "Removing link..."
+        rm -f ~/$@
+        echo "Link removed!"
+    fi
+
+    if [ -e ~/$@ ]; then
+        echo "$@ already exists - renaming to $@.bak"
+        mv ~/$@ ~/$@.bak
+    fi
+
+    ln -s $SCRIPT_DIR/$@ ~/$@
+
+    echo "Successfully linked $@!"
+    echo ""
+}
+
 echo $SCRIPT_DIR
 
 echo "Linking .vimrc..."
@@ -95,6 +117,8 @@ if [ "$(basename "$SHELL")" != "zsh" ]; then
     fi
 fi
 
+link_to_home .p10k.zsh
+
 if [ ! -d ~/.zplug ]; then
     curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
@@ -133,25 +157,7 @@ fi
 echo ".bashrc successfully set up!"
 echo ""
 
-echo "Linking .inputrc..."
-
-if [ -L ~/.inputrc ]; then
-    echo "Existing .inputrc link detected pointing to:"
-    echo "`readlink ~/.inputrc`"
-    echo "Removing link..."
-    rm -f ~/.inputrc
-    echo "Link removed!"
-fi
-
-if [ -e ~/.inputrc ]; then
-    echo ".inputrc already exists - renaming to .inputrc.bak"
-    mv ~/.inputrc ~/.inputrc.bak
-fi
-
-ln -s $SCRIPT_DIR/.inputrc ~/.inputrc
-
-echo "Successfully linked .inputrc!"
-echo ""
+link_to_home .inputrc
 
 SETUP_CFG=`dirname $0`/setup.cfg
 if [ -f $SETUP_CFG ]; then

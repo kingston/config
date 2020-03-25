@@ -26,7 +26,8 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/history-substring-search", from:oh-my-zsh
 zplug "plugins/nvm", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
-zplug "themes/robbyrussell", from:oh-my-zsh
+
+zplug romkatv/powerlevel10k, as:theme, depth:1
 
 if ! zplug check; then
     zplug install
