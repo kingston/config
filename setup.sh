@@ -11,6 +11,10 @@ set -e
 ABS_PATH=$(cd ${0%/*} && echo $PWD/${0##*/})
 SCRIPT_DIR=`dirname "$ABS_PATH"`
 
+command_exists() {
+	command -v "$@" >/dev/null 2>&1
+}
+
 echo $SCRIPT_DIR
 
 echo "Linking .vimrc..."
@@ -72,9 +76,27 @@ ln -s $SCRIPT_DIR/scripts ~/scripts/common
 echo "Scripts directory successfully set up!"
 echo ""
 
-if [ ! -d ~/.oh-my-zsh ]; then
-    echo "Installing Oh My Zsh"
-    RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if ! command_exists zsh; then
+    echo "Please install zsh first"
+    exit 1
+fi
+
+if [ "$(basename "$SHELL")" != "zsh" ]; then
+    if ! ZSH_SHELL=$(which zsh); then
+        echo "Unable to find zsh command"
+        exit 1
+    fi
+    echo "Attempting to change default shell to $ZSH_SHELL"
+    if ! chsh -s "$ZSH_SHELL"; then
+        echo "Unable to change default shell. Please change it manually."
+    else
+        export SHELL="$ZSH_SHELL"
+        echo "Shell successfully changed!"
+    fi
+fi
+
+if [ ! -d ~/.zplug ]; then
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
 
 echo "Setting up .zshrc"
