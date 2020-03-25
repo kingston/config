@@ -41,6 +41,8 @@ git config --global core.editor "vim"
 
 git config --global core.excludesfile ~/.global_ignore
 
+# Prevent less from showing if content is less than one screen
+git config --global --replace-all core.pager "less -F -X"
 
 if [ -L ~/.global_ignore ]; then
     rm -f ~/.global_ignore
