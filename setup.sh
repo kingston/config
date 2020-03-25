@@ -134,9 +134,10 @@ if [ "$ZSHRCLINE" != "" ]; then
     echo "Skipping .zshrc setup - configuration already detected"
 else
     echo -e "\n#Scripts configuration\nsource $SCRIPT_DIR/.zshrcadditions\n" >> ~/.zshrc
-    echo "Installing .zsh plugins..."
-    zsh -i -c exit
 fi
+
+echo "Checking if any zsh plugins needs install..."
+zsh -i -c exit
 
 
 echo "Setting up .bashrc..."
