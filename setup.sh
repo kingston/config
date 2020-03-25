@@ -33,22 +33,23 @@ ln -s $SCRIPT_DIR/.vimrc ~/.vimrc
 echo "Successfully linked .vimrc!"
 echo ""
 
-echo "Installing Vundle"
+echo "Installing Plug"
 
-if [ -d ~/.vim/bundle/vundle ]; then
-    echo "Vundle already is installed.  Skipping installation."
+if [ -e ~/.vim/autoload/plug.vim ]; then
+    echo "Plug already is installed.  Skipping installation."
 else
-    git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-echo "Vundle installed!"
+echo "Plug installed!"
 echo ""
 
-echo "Installing Vundle plugins..."
+echo "Installing Plug plugins..."
 
-vim +BundleInstall +qall
+vim +PlugClean! +PlugInstall +qall
 
-echo "Vundle plugins successfully installed!"
+echo "Plug plugins successfully installed!"
 
 echo "Setting up scripts directory"
 
@@ -123,9 +124,6 @@ echo ""
 
 echo "Done setting up!"
 echo ""
-echo "You may also need to clean up any unused vim bundles by :BundleClean"
-echo "You may also need to compile the ruby extension in command-t"
-echo "See http://kresimirbojcic.com/2011/05/14/installing-command-t-ubunutu-11.04-ruby-1.9.2.html for more info"
 echo "Be sure to enable xterm-256color in terminal settings if you are ssh'ing in"
 echo "And also, install dircolors for solarized, e.g. seebi/dircolors-solarized"
 echo "Also, symlink .tmux.conf to home if you want tmux settings"

@@ -1,33 +1,19 @@
-" Vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" Plug Bundles
+call plug#begin('~/.vim/plugged')
 
-" Bundles
-Bundle 'gmarik/vundle'
+Plug 'preservim/nerdcommenter'
 
-Bundle 'tpope/vim-rails'
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'ervandew/supertab'
-Bundle 'AutoComplPop'
+Plug 'altercation/vim-colors-solarized'
 
-Bundle 'Lokaltog/vim-easymotion'
+Plug 'tpope/vim-fugitive'
 
-Bundle 'altercation/vim-colors-solarized'
+Plug 'ctrlpvim/ctrlp.vim'
 
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdtree'
-
-Bundle 'kchmck/vim-coffee-script'
-
-Bundle 'rodjek/vim-puppet'
-
-Bundle 'nono/vim-handlebars'
-
-if version >= 703
-  Bundle 'git://git.wincent.com/command-t.git'
-  Bundle 'sjbach/lusty'
+if has('ruby')
+  Plug 'sjbach/lusty'
 endif
+
+call plug#end()
 
 " Filetype Configuration
 filetype on
@@ -92,9 +78,6 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 nnoremap <tab> %
 
-" EasyMotion
-let g:EasyMotion_leader_key = 'q'
-
 " Wrapping
 set wrap
 set textwidth=79
@@ -128,14 +111,8 @@ syntax on
 " Solarized palette
 silent! colorscheme solarized
 
-" Programming helpful stuff
-runtime ftplugin/man.vim
-
 " Spell checking
 set spelllang=en_us
-
-" NERDTree Bindings
-map <F2> :NERDTreeToggle<CR>
 
 " bind "gb" to "git blame" for visual and normal mode.
 vmap gb :<C-U>!git blame % -L<C-R>=line("'<") <CR>,<C-R>=line("'>") <CR><CR>
@@ -152,6 +129,11 @@ if has("unix")
 else
     map <leader>e :e <C-R>=expand("%:p:h") . "\" <CR>
 endif
+
+" Ctrl-P Configuration
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
 
 " CD into current directory
 
