@@ -133,7 +133,7 @@ ZSHRCLINE=`grep "Scripts configuration" ~/.zshrc || true`
 if [ "$ZSHRCLINE" != "" ]; then
     echo "Skipping .zshrc setup - configuration already detected"
 else
-    echo -e "\n#Scripts configuration\nsource $SCRIPT_DIR/.zshrcadditions\n" >> ~/.zshrc
+    echo -e "\n#Scripts configuration\nsource $SCRIPT_DIR/init.zsh\n" >> ~/.zshrc
 fi
 
 echo "Checking if any zsh plugins needs install..."
