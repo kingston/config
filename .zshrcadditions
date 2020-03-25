@@ -20,6 +20,7 @@ source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-completions"
 
+zplug "robbyrussell/oh-my-zsh", as:plugin, use:"lib/*.zsh", defer:2
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/history-substring-search", from:oh-my-zsh
@@ -27,11 +28,8 @@ zplug "plugins/nvm", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
 zplug "themes/robbyrussell", from:oh-my-zsh
 
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+if ! zplug check; then
+    zplug install
 fi
 
 zplug load
