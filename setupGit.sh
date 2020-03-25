@@ -24,6 +24,7 @@ git config --global --remove-section alias
 git config --global alias.ap "add -p"
 git config --global alias.co "checkout"
 git config --global alias.cob "checkout -b"
+git config --global alias.dc "diff --cached"
 git config --global alias.fe "fetch -p"
 git config --global alias.ci "commit"
 git config --global alias.st "status -sb"
