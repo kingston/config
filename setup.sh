@@ -111,7 +111,7 @@ if [ "$ZSHRCLINE" != "" ]; then
 else
     echo -e "\n#Scripts configuration\nsource $SCRIPT_DIR/.zshrcadditions\n" >> ~/.zshrc
     echo "Installing .zsh plugins..."
-    zsh -c exit
+    zsh -i -c exit
 fi
 
 
