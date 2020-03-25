@@ -72,6 +72,25 @@ ln -s $SCRIPT_DIR/scripts ~/scripts/common
 echo "Scripts directory successfully set up!"
 echo ""
 
+if [ ! -d ~/.oh-my-zsh ]; then
+    echo "Installing Oh My Zsh"
+    RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+echo "Setting up .zshrc"
+
+touch ~/.zshrc
+
+# Check if the .bashrc file already contains the source line
+ZSHRCLINE=`grep "Scripts configuration" ~/.zshrc || true`
+
+if [ "$ZSHRCLINE" != "" ]; then
+    echo "Skipping .zshrc setup - configuration already detected"
+else
+    echo -e "\n#Scripts configuration\nsource $SCRIPT_DIR/.zshrcadditions\n" >> ~/.zshrc
+fi
+
+
 echo "Setting up .bashrc..."
 
 touch ~/.bashrc

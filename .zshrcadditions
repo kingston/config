@@ -1,0 +1,13 @@
+if [ -n "${SHOW_TMUX_WARNING+x}" ]; then
+    echo "Warning: This instance is not running in a tmux instance!"
+    echo "If you wish to do so, run tmux."
+fi
+
+# TMux shortcut scripts
+alias m="~/scripts/common/tmuxer.sh"
+alias j="~/scripts/common/untmux.sh"
+
+# Add search additions
+
+alias s="~/scripts/common/search.sh"
+alias si="~/scripts/common/searchi.sh"
