@@ -13,7 +13,7 @@ if [ $# -ne $USERNAME_ARGS_NUMBER ] && [ $# -ne 0 ]; then
 fi
 
 # Sets up Git
-if [ $# == $USERNAME_ARGS_NUMBER ]; then
+if [ $# -eq $USERNAME_ARGS_NUMBER ]; then
     git config --global user.name "$1"
     git config --global user.email "$2"
 fi
