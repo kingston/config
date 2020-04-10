@@ -31,7 +31,6 @@ zplug "robbyrussell/oh-my-zsh", as:plugin, use:"lib/*.zsh", defer:2
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/history-substring-search", from:oh-my-zsh
-zplug "plugins/nvm", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
 
 zplug romkatv/powerlevel10k, as:theme, depth:1
