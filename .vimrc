@@ -143,6 +143,12 @@ else
     map <leader>y :!cp <C-R>=expand("%") <CR> <C-R>=expand("%:p:h") . "\" <CR>
 endif
 
+" Patch Solarized for iTerm2 patch
+" See https://github.com/altercation/solarized/issues/220
+set background=dark
+let g:solarized_termtrans = 1
+colorscheme solarized
+
 " Source local settings
 if filereadable($HOME . '/.local.vimrc')
     source ~/.local.vimrc
