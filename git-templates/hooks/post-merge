@@ -1,0 +1,15 @@
+#!/bin/bash
+# MIT © Sindre Sorhus - sindresorhus.com
+
+set -e
+
+changed_files="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
+
+check_run() {
+  echo "$changed_files" | egrep --quiet "$1" && eval "$2"
+}
+
+check_run package-lock.json "npm install"
+check_run yarn.lock "yarn install"
+check_run ios/Podfile.lock "cd ios && pod install"
+
