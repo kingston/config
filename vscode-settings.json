@@ -1,33 +1,57 @@
 {
-  "window.zoomLevel": 0,
-  "editor.tabSize": 2,
-  "git.autofetch": true,
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-  },
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "git.confirmSync": false,
-  "prettier.requireConfig": true,
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "eslint.packageManager": "yarn",
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "diffEditor.ignoreTrimWhitespace": false
-}
+    "editor.tabSize":2,
+    "git.autofetch":true,
+    "editor.formatOnSave":true,
+    "editor.codeActionsOnSave":{
+       "source.fixAll.eslint":true
+    },
+    "typescript.updateImportsOnFileMove.enabled":"always",
+    "eslint.validate":[
+       "javascript",
+       "javascriptreact",
+       "typescript",
+       "typescriptreact"
+    ],
+    "git.confirmSync":false,
+    "prettier.requireConfig":true,
+    "[javascript]":{
+       "editor.defaultFormatter":"esbenp.prettier-vscode"
+    },
+    "[html]":{
+       "editor.defaultFormatter":"esbenp.prettier-vscode"
+    },
+    "eslint.packageManager":"yarn",
+    "[json]":{
+       "editor.defaultFormatter":"esbenp.prettier-vscode"
+    },
+    "[jsonc]":{
+       "editor.defaultFormatter":"esbenp.prettier-vscode"
+    },
+    "javascript.updateImportsOnFileMove.enabled":"always",
+    "gitlens.hovers.currentLine.over":"line",
+    "gitlens.statusBar.enabled":false,
+    "gitlens.codeLens.enabled":false,
+    "gitlens.currentLine.enabled":false,
+    "explorer.autoReveal":false,
+    "[typescriptreact]":{
+       "editor.defaultFormatter":"esbenp.prettier-vscode"
+    },
+    "[typescript]":{
+       "editor.defaultFormatter":"esbenp.prettier-vscode"
+    },
+    "[terraform]":{
+       "editor.defaultFormatter":"hashicorp.terraform",
+       "editor.formatOnSave":true
+    },
+    "terraform.languageServer":{
+       "external":true,
+       "args":[
+          "serve",
+          "-tf-exec=/usr/local/bin/terraform"
+       ]
+    },
+    "diffEditor.ignoreTrimWhitespace":false,
+    "workbench.editorAssociations":{
+       "*.ipynb":"jupyter.notebook.ipynb"
+    }
+ }
