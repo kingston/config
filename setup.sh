@@ -93,7 +93,7 @@ if [ -d ~/scripts/common ]; then
     exit 1
 fi
 
-ln -s $SCRIPT_DIR/scripts ~/scripts/common
+ln -s $SCRIPT_DIR/.zsh_plugins.txt ~/.zsh_plugins.txt
 
 echo "Scripts directory successfully set up!"
 echo ""
@@ -119,9 +119,11 @@ fi
 
 link_to_home .p10k.zsh
 
-if [ ! -d ~/.zplug ]; then
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+if [ ! -d ~/.antidote ]; then
+  git clone --depth=1 --branch v1.6.4 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 fi
+
+ln -s $SCRIPT_DIR/scripts ~/scripts/common
 
 echo "Setting up .zshrc"
 

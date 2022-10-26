@@ -20,26 +20,13 @@ alias s="~/scripts/common/search.sh"
 alias si="~/scripts/common/searchi.sh"
 
 
-# Zplug
+# Antidote
 
-source ~/.zplug/init.zsh
+# source antidote
+source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-completions"
-
-zplug "robbyrussell/oh-my-zsh", as:plugin, use:"lib/*.zsh", defer:2
-zplug "plugins/colored-man-pages", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/history-substring-search", from:oh-my-zsh
-zplug "plugins/sudo", from:oh-my-zsh
-
-zplug romkatv/powerlevel10k, as:theme, depth:1
-
-if ! zplug check; then
-    zplug install
-fi
-
-zplug load
+# initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
+antidote load
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
