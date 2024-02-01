@@ -1,1 +1,3 @@
 setup.cfg
+**/.venv
+**/__pycache__

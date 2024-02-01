@@ -19,14 +19,14 @@ alias j="~/scripts/common/untmux.sh"
 alias s="~/scripts/common/search.sh"
 alias si="~/scripts/common/searchi.sh"
 
+# Git additions
+
+alias git-bds='git checkout -q master && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch\^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
 
 # Antidote
 
 # source antidote
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
-
-# initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
-antidote load
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
