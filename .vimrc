@@ -5,8 +5,6 @@ Plug 'preservim/nerdcommenter'
 
 Plug 'altercation/vim-colors-solarized'
 
-Plug 'tpope/vim-fugitive'
-
 Plug 'ctrlpvim/ctrlp.vim'
 
 if has('ruby')

@@ -3,13 +3,6 @@ if [ -n "${SHOW_TMUX_WARNING+x}" ]; then
     echo "If you wish to do so, run tmux."
 fi
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # TMux shortcut scripts
 alias m="~/scripts/common/tmuxer.sh"
 alias j="~/scripts/common/untmux.sh"
@@ -19,17 +12,49 @@ alias j="~/scripts/common/untmux.sh"
 alias s="~/scripts/common/search.sh"
 alias si="~/scripts/common/searchi.sh"
 
-# Git additions
+source ~/.zplug/init.zsh
 
-alias git-bds='git checkout -q master && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch\^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
+zplug "zsh-users/zsh-syntax-highlighting", at:e0165eaa730dd0fa32, defer:2
+zplug "zsh-users/zsh-autosuggestions", at:c3d4e576c9c86eac62884
 
-# Antidote
+if ! zplug check; then
+    zplug install
+fi
 
-# source antidote
-source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+zplug load
 
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+#compdef pnpm
+###-begin-pnpm-completion-###
+if type compdef &>/dev/null; then
+  _pnpm_completion () {
+    local reply
+    local si=$IFS
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+    IFS=$'\n' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" SHELL=zsh pnpm completion-server -- "${words[@]}"))
+    IFS=$si
+
+    if [ "$reply" = "__tabtab_complete_files__" ]; then
+      _files
+    else
+      _describe 'values' reply
+    fi
+  }
+  # When called by the Zsh completion system, this will end with
+  # "loadautofunc" when initially autoloaded and "shfunc" later on, otherwise,
+  # the script was "eval"-ed so use "compdef" to register it with the
+  # completion system
+  if [[ $zsh_eval_context == *func ]]; then
+    _pnpm_completion "$@"
+  else
+    compdef _pnpm_completion pnpm
+  fi
+fi
+###-end-pnpm-completion-###
+
+bindkey '^E' autosuggest-accept
+
+if [[ "$(uname)" == "Darwin" ]]; then
+    export CLICOLOR=1
+fi
+
+eval "$(~/.starship/starship init zsh)"

@@ -39,3 +39,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+# Add CLICOLOR for Macs
+if [ "$(uname)" == "Darwin" ]; then
+    export CLICOLOR=1
+fi

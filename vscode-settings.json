@@ -1,57 +1,73 @@
 {
-    "editor.tabSize":2,
-    "git.autofetch":true,
-    "editor.formatOnSave":true,
-    "editor.codeActionsOnSave":{
-       "source.fixAll.eslint":true
-    },
-    "typescript.updateImportsOnFileMove.enabled":"always",
-    "eslint.validate":[
-       "javascript",
-       "javascriptreact",
-       "typescript",
-       "typescriptreact"
-    ],
-    "git.confirmSync":false,
-    "prettier.requireConfig":true,
-    "[javascript]":{
-       "editor.defaultFormatter":"esbenp.prettier-vscode"
-    },
-    "[html]":{
-       "editor.defaultFormatter":"esbenp.prettier-vscode"
-    },
-    "eslint.packageManager":"yarn",
-    "[json]":{
-       "editor.defaultFormatter":"esbenp.prettier-vscode"
-    },
-    "[jsonc]":{
-       "editor.defaultFormatter":"esbenp.prettier-vscode"
-    },
-    "javascript.updateImportsOnFileMove.enabled":"always",
-    "gitlens.hovers.currentLine.over":"line",
-    "gitlens.statusBar.enabled":false,
-    "gitlens.codeLens.enabled":false,
-    "gitlens.currentLine.enabled":false,
-    "explorer.autoReveal":false,
-    "[typescriptreact]":{
-       "editor.defaultFormatter":"esbenp.prettier-vscode"
-    },
-    "[typescript]":{
-       "editor.defaultFormatter":"esbenp.prettier-vscode"
-    },
-    "[terraform]":{
-       "editor.defaultFormatter":"hashicorp.terraform",
-       "editor.formatOnSave":true
-    },
-    "terraform.languageServer":{
-       "external":true,
-       "args":[
-          "serve",
-          "-tf-exec=/usr/local/bin/terraform"
-       ]
-    },
-    "diffEditor.ignoreTrimWhitespace":false,
-    "workbench.editorAssociations":{
-       "*.ipynb":"jupyter.notebook.ipynb"
-    }
- }
+  "editor.tabSize": 2,
+  "git.autofetch": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.options": {
+    "extensions": [".js", ".jsx", ".md", ".mdx", ".ts", ".tsx"]
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "eslint.validate": [
+    "markdown",
+    "mdx",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "git.confirmSync": false,
+  "prettier.requireConfig": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.statusBar.enabled": false,
+  "gitlens.codeLens.enabled": false,
+  "gitlens.currentLine.enabled": false,
+  "explorer.autoReveal": false,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true
+  },
+  "editor.inlineSuggest.enabled": true,
+  "redhat.telemetry.enabled": false,
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "githubPullRequests.pullBranch": "never",
+  "git.mergeEditor": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": false,
+    "yaml": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "inlineChat.mode": "preview",
+  "github.copilot.editor.enableAutoCompletions": true,
+}

@@ -1,5 +1,6 @@
 #!/bin/bash
-# MIT © Sindre Sorhus - sindresorhus.com
+
+# Adapted from code by Sinhdre Sorus - sindresorhus.com
 
 set -e
 
@@ -9,7 +10,10 @@ check_run() {
   echo "$changed_files" | egrep --quiet "$1" && eval "$2"
 }
 
-check_run package-lock.json "npm install"
-check_run yarn.lock "yarn install"
-check_run ios/Podfile.lock "cd ios && pod install"
+# Handle pnpm install when any pnpm-lock.yaml is modified
+check_run 'pnpm-lock.yaml' "pnpm install"
 
+# Handle npm, yarn, and bundle installs if those lock files are present (in case non-pnpm is used for some parts of the repo)
+check_run 'package-lock.json' "npm install"
+check_run 'yarn.lock' "yarn install"
+check_run 'Gemfile.lock' "bundle install"
