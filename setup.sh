@@ -35,9 +35,9 @@ link_to_home() {
     local target=$1
 
     # Check if the target is already a symbolic link
-    if [ -L ~/"$target" ]; then
+    if [ -L "~/$target" ]; then
         local current_link
-        current_link=$(readlink ~/"$target")
+        current_link=$(readlink "~/$target")
 
         # Check if the current link points to the correct destination
         if [ "$current_link" == "$SCRIPT_DIR/$target" ]; then
@@ -45,7 +45,7 @@ link_to_home() {
             return
         else
             echo "Existing link for $target detected, pointing to: $current_link"
-            rm -f ~/"$target"
+            rm -f "~/$target"
             echo "Old link removed!"
         fi
     fi
@@ -169,8 +169,6 @@ if [ "$(basename "$SHELL")" != "zsh" ]; then
     fi
 fi
 
-link_to_home .p10k.zsh
-
 touch ~/.zshrc
 
 # Check if the .zshrc file already contains the source line
@@ -191,7 +189,11 @@ if [ ! -d ~/.starship ]; then
     curl -sL --proto-redir -all,https https://starship.rs/install.sh | sh -s -- --yes --bin-dir ~/.starship
 fi
 
-link_to_home .config
+if [ ! -d ~/.config ]; then
+    mkdir ~/.config
+fi
+
+link_to_home .config/starship.toml
 
 ## Bash Configuration
 ## ==================
