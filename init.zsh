@@ -51,7 +51,7 @@ if type compdef &>/dev/null; then
 fi
 ###-end-pnpm-completion-###
 
-bindkey '^E' autosuggest-accept
+bindkey '^S' autosuggest-accept
 
 if [[ "$(uname)" == "Darwin" ]]; then
     export CLICOLOR=1
