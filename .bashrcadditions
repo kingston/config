@@ -23,17 +23,10 @@ fi
 alias s="~/scripts/common/search.sh"
 alias si="~/scripts/common/searchi.sh"
 
-# Opening up vim additions
-
-alias vc="~/scripts/common/vcur.sh"
-alias v="~/scripts/common/vlc.sh"
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'

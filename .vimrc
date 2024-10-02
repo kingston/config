@@ -1,154 +1,181 @@
-" Plug Bundles
+" === Plugin Management ===
+" Use vim-plug to manage plugins. Plugins are installed in ~/.vim/plugged
 call plug#begin('~/.vim/plugged')
 
+" NERDCommenter: A tool for commenting/uncommenting code
 Plug 'preservim/nerdcommenter'
 
+" Solarized Color Scheme
 Plug 'altercation/vim-colors-solarized'
 
+" CtrlP: Fuzzy file finder
 Plug 'ctrlpvim/ctrlp.vim'
 
-if has('ruby')
-  Plug 'sjbach/lusty'
-endif
-
+" Initialize plugin system
 call plug#end()
 
-" Filetype Configuration
+" === Filetype Detection & Plugin Support ===
+" Enable filetype detection, plugins, and indentation rules
 filetype on
 filetype plugin indent on
 
+" Disable Vi compatibility for better Vim features
 set nocompatible
 
-" Mouse Configuration
+" === Mouse Support ===
+" Enable mouse in all modes
 set mouse=a
 
-" Tab Configuration
+" === Tab and Indentation Settings ===
+" Set tab to 2 spaces and use spaces instead of tabs
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
 
-" Set exception for ruby which has 2 spaces
+" Set an exception for Python files, which use 4 spaces for indentation
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
+" Enable auto-indentation
 set autoindent
+" Set encoding to UTF-8
 set encoding=utf-8
 
-" CTags
+" === CTags Integration ===
+" Use CTags for source code navigation
 set tags=tags;/
 
-" Display stuff
-" Sets how much to show above and below the cursor
+" === Display Settings ===
+" Keep 3 lines visible above and below the cursor
 set scrolloff=3
+" Show current mode (insert, normal, etc.)
 set showmode
+" Display partial commands as they are typed
 set showcmd
-set laststatus=2 "Always show status bar at the bottom
-set number "Show line number
+" Always show the status bar at the bottom
+set laststatus=2
+" Show line numbers
+set number
+" Show the cursor position in the status line
 set ruler
 
-" Hidden buffers or something complicated
+" === Buffer Management ===
+" Allow switching between unsaved buffers
 set hidden
-" Bash-like autocompletions
+
+" === Command-line Completion ===
+" Enhanced command-line completion with visual feedback
 set wildmenu
+" Show a list of matches and then complete the longest common part
 set wildmode=list:longest
 
-" Put a nice line at thr cursor
+" === Cursor Settings ===
+" Highlight the current line
 set cursorline
 
-" Something about optimizing for fast terminals
+" === Performance Settings ===
+" Optimize for fast terminals by reducing redraw lag
 set ttyfast
 
-" Backspace behavior
+" === Backspace Behavior ===
+" Allow backspace over indentation, line breaks, and insert points
 set backspace=indent,eol,start
 
-" Mapping stuff
+" === Leader Key ===
+" Set the leader key to ","
 let mapleader = ","
 
-" Searching
+" === Searching ===
+" Use magic search by default (enables advanced regex features)
 nnoremap / /\v
 vnoremap / /\v
+
+" Ignore case when searching, unless search pattern contains uppercase
 set ignorecase
 set smartcase
+" Incrementally highlight search results as you type
 set incsearch
+" Highlight search results
 set hlsearch
-" Type ", " to remove highlighting
+
+" Press <leader> + <space> to clear search highlights
 nnoremap <leader><space> :noh<cr>
-nnoremap <tab> %
+
+" === Navigation Shortcuts ===
+" Jump to matching braces or parentheses with <tab>
 nnoremap <tab> %
 
-" Wrapping
+" === Line Wrapping ===
+" Enable line wrapping and set text width to 79 characters
 set wrap
 set textwidth=79
+" Configure wrapping and formatting options
 set formatoptions=qrn1
 
-" Keyboard shortcuts
-" Make j go to next displayed line
+" === Keyboard Shortcuts ===
+" Move by display lines (wrapped lines) instead of actual lines
 nnoremap j gj 
 nnoremap k gk
 
+" Disable <F1> key (to prevent accidental help popup)
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-nnoremap ; :
-
+" Toggle paste mode with <F2>
 set pastetoggle=<F2>
 
-" Use "jj" instead of pressing <ESC>
+" Use "jj" as a shortcut to exit insert mode
 inoremap jj <ESC>
 
-" Auto-save upon lose focus
+" Auto-save all files when Vim loses focus
 au FocusLost * :wa
 
-" I apparently like dark backgrounds
+" === Color Settings ===
+" Set background to dark for better contrast in dark themes
 set background=dark
 
-" Color syntax highlighting
+" Enable syntax highlighting
 syntax on
 
-" Solarized palette
+" Apply the Solarized color scheme
 silent! colorscheme solarized
 
-" Spell checking
+" === Spell Checking ===
+" Enable spell check for English (US)
 set spelllang=en_us
 
-" bind "gb" to "git blame" for visual and normal mode.
-vmap gb :<C-U>!git blame % -L<C-R>=line("'<") <CR>,<C-R>=line("'>") <CR><CR>
-nmap gb :Gblame<CR>
-nmap gl :Glog<CR>
-nmap gd :Gdiff<CR>
-
-" CD into current directory - we'll see how well this works...
-"   Edit another file in the same directory as the current file
-"   uses expression to extract path from current file's path
-"  (thanks Douglas Potts)
+" === File Navigation ===
+" Open a file in the same directory as the current file
 if has("unix")
     map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 else
     map <leader>e :e <C-R>=expand("%:p:h") . "\" <CR>
 endif
 
-" Ctrl-P Configuration
+" === Ctrl-P Configuration ===
+" Set Ctrl-P shortcut for fuzzy file finder
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+" Search files recursively, starting from the root directory
 let g:ctrlp_working_path_mode = 'ra'
 
-" CD into current directory
-
+" === Custom File Copy Shortcut ===
+" Shortcut to copy current file to its directory
 if has("unix")
     map <leader>y :!cp <C-R>=expand("%") <CR> <C-R>=expand("%:p:h") . "/" <CR>
 else
     map <leader>y :!cp <C-R>=expand("%") <CR> <C-R>=expand("%:p:h") . "\" <CR>
 endif
 
-" Patch Solarized for iTerm2 patch
-" See https://github.com/altercation/solarized/issues/220
+" === iTerm2 Solarized Patch ===
+" Workaround for Solarized color issues in iTerm2
 set background=dark
 let g:solarized_termtrans = 1
 colorscheme solarized
 
-" Source local settings
+" === Local Config Support ===
+" Source additional settings from ~/.local.vimrc if it exists
 if filereadable($HOME . '/.local.vimrc')
     source ~/.local.vimrc
 endif
-
