@@ -18,6 +18,9 @@ if [ $# -eq $USERNAME_ARGS_NUMBER ]; then
     git config --global user.email "$2"
 fi
 
+# Prune remote branches locally
+git config --global fetch.prune true
+
 # Create alias shortcuts
 git config --global --remove-section alias
 
