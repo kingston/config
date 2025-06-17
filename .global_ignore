@@ -16,3 +16,7 @@
 *.un~
 Session.vim
 .netrwhist
+
+# Aider ignores
+.aider.*
+
