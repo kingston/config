@@ -15,3 +15,8 @@ set show-all-if-ambiguous on
 
 # Show all completions even if the user hasn't modified the current line (useful for reviewing all possible completions without typing further).
 set show-all-if-unmodified on
+
+# Enable Ctrl-Left Arrow and Ctrl-Right Arrow to navigate by word
+"\e[1;5D": backward-word
+"\e[1;5C": forward-word
+
