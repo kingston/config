@@ -12,6 +12,9 @@ alias j="~/scripts/common/untmux.sh"
 alias s="~/scripts/common/search.sh"
 alias si="~/scripts/common/searchi.sh"
 
+# Eternal Terminal connection
+alias etc="~/scripts/common/et-connect.sh"
+
 source ~/.zplug/init.zsh
 
 zplug "zsh-users/zsh-syntax-highlighting", at:e0165eaa730dd0fa32, defer:2
