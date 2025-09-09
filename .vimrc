@@ -174,7 +174,6 @@ endif
 " Workaround for Solarized color issues in iTerm2
 set background=dark
 let g:solarized_termtrans = 1
-colorscheme solarized
 
 " === Local Config Support ===
 " Source additional settings from ~/.local.vimrc if it exists
