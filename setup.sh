@@ -215,7 +215,7 @@ SETUP_CFG=`dirname $0`/setup.cfg
 if [ -f $SETUP_CFG ]; then
     source $SETUP_CFG
     echo "Setting up Git..."
-    `dirname $0`/setupGit.sh "$GIT_NAME" "$GIT_EMAIL"
+    `dirname $0`/setup-git.sh "$GIT_NAME" "$GIT_EMAIL"
 else
     echo "No configuration file (setup.cfg) found.  Please set up Git manually."
 fi

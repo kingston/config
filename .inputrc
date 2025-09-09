@@ -19,4 +19,3 @@ set show-all-if-unmodified on
 # Enable Ctrl-Left Arrow and Ctrl-Right Arrow to navigate by word
 "\e[1;5D": backward-word
 "\e[1;5C": forward-word
-
