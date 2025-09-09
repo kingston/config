@@ -187,8 +187,10 @@ touch ~/.zshrc
 
 if [ ! -d ~/.zplug ]; then
     echo "Installing ZPlug..."
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+    git clone https://github.com/zplug/zplug.git ~/.zplug
 fi
+
+git -C ~/.zplug checkout ac6c2a3e9eea6a488d96d98c752ef887e7d5aae3
 
 # Check if the .zshrc file already contains the source line
 upsert_config_init ~/.zshrc "$SCRIPT_DIR/init.zsh"
