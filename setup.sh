@@ -203,7 +203,7 @@ if [ ! -d ~/.starship ]; then
 fi
 
 echo "Checking if any zsh plugins needs install..."
-zsh -i -c exit
+zsh -i -c exit < /dev/null
 
 if [ ! -d ~/.config ]; then
     mkdir ~/.config
