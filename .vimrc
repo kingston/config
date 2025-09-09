@@ -139,7 +139,9 @@ set background=dark
 syntax on
 
 " Apply the Solarized color scheme
-silent! colorscheme solarized
+if !empty(glob('~/.vim/plugged/vim-colors-solarized/colors/solarized.vim'))
+  silent! colorscheme solarized
+endif
 
 " === Spell Checking ===
 " Enable spell check for English (US)

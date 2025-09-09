@@ -114,11 +114,12 @@ fi
 
 echo "Installing Vim Plug plugins..."
 
-vim -Es -V1/home/vscode/vim-plug.log -u ~/.vimrc \
+vim -n -Es -i NONE -u ~/.vimrc -U NONE \
+  -V1/home/vscode/vim-plug.log \
   +'let g:plug_window="noautocmd enew"' \
   +'let g:plug_pwindow="noautocmd enew"' \
-  +'silent! PlugClean!' \
-  +'silent! PlugInstall --sync' \
+  +'PlugClean!' \
+  +'PlugInstall --sync' \
   +qa
 
 echo "Vim plug plugins successfully installed!"
