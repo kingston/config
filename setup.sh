@@ -35,9 +35,9 @@ link_to_home() {
     local target=$1
 
     # Check if the target is already a symbolic link
-    if [ -L "~/$target" ]; then
+    if [ -L ~/"$target" ]; then
         local current_link
-        current_link=$(readlink "~/$target")
+        current_link=$(readlink ~/"$target")
 
         # Check if the current link points to the correct destination
         if [ "$current_link" == "$SCRIPT_DIR/$target" ]; then
@@ -45,15 +45,21 @@ link_to_home() {
             return
         else
             echo "Existing link for $target detected, pointing to: $current_link"
-            rm -f "~/$target"
+            rm -f ~/"$target"
             echo "Old link removed!"
         fi
     fi
 
-    # If the target exists as a regular file or directory, rename it with a .bak extension
+    # If the target exists as a regular file or directory, handle backup
     if [ -e ~/"$target" ]; then
-        echo "$target already exists - renaming to $target.bak"
-        mv ~/"$target" ~/"$target".bak
+        # Check if backup already exists to avoid creating duplicate backups
+        if [ -e ~/"$target".bak ]; then
+            echo "$target already exists and backup $target.bak already exists - removing original"
+            rm -f ~/"$target"
+        else
+            echo "$target already exists - renaming to $target.bak"
+            mv ~/"$target" ~/"$target".bak
+        fi
     fi
 
     # Create a new symbolic link from the script directory to the home directory
