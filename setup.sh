@@ -114,7 +114,7 @@ fi
 
 echo "Installing Vim Plug plugins..."
 
-vim -es -u ~/.vimrc +PlugClean! +'PlugInstall --sync' +qa
+vim -Es -V1~/vim-plug.log -u ~/.vimrc +PlugClean! +'PlugInstall --sync' +qa
 
 echo "Vim plug plugins successfully installed!"
 
