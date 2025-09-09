@@ -26,6 +26,7 @@ fi
 
 zplug load
 
+bindkey -e
 bindkey '^S' autosuggest-accept
 
 if [[ "$(uname)" == "Darwin" ]]; then
