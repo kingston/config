@@ -82,8 +82,6 @@ git config --global core.excludesfile ~/.global_ignore
 # Prevent less from showing if content is less than one screen
 git config --global --replace-all core.pager "less -F -X"
 
-git config --global init.templatedir "$SCRIPT_DIR/git-templates"
-
 if [ -L ~/.global_ignore ]; then
     rm -f ~/.global_ignore
 fi

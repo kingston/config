@@ -42,8 +42,6 @@ There are a few files and configurations that need to be linked manually:
 
 - **iTerm2**: Use `./link-iterm2.sh` to link the library for opening new windows.
 - **VSCode Settings**: The `vscode-settings.json` file contains user settings for VSCode.
-- **Git Hooks**:  
-  - The Git post-merge hook in `git-templates/hooks/post-merge` checks for changes to `pnpm`, `yarn`, or `npm` lock files and reruns install commands if necessary.
 
 ## Additional Configurations
 
