@@ -183,13 +183,15 @@ fi
 
 touch ~/.zshrc
 
-# Check if the .zshrc file already contains the source line
-upsert_config_init ~/.zshrc "$SCRIPT_DIR/init.zsh"
+# Install ZPlug
 
 if [ ! -d ~/.zplug ]; then
     echo "Installing ZPlug..."
     curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
+
+# Check if the .zshrc file already contains the source line
+upsert_config_init ~/.zshrc "$SCRIPT_DIR/init.zsh"
 
 # Install Starship
 if [ ! -d ~/.starship ]; then
