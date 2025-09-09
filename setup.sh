@@ -191,15 +191,15 @@ if [ ! -d ~/.zplug ]; then
     curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
 
-echo "Checking if any zsh plugins needs install..."
-zsh -i -c exit
-
 # Install Starship
 if [ ! -d ~/.starship ]; then
     echo "Installing Starship prompt..."
     mkdir ~/.starship
     curl -sL --proto-redir -all,https https://starship.rs/install.sh | sh -s -- --yes --bin-dir ~/.starship
 fi
+
+echo "Checking if any zsh plugins needs install..."
+zsh -i -c exit
 
 if [ ! -d ~/.config ]; then
     mkdir ~/.config
