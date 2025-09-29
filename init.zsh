@@ -29,6 +29,9 @@ zplug load
 bindkey -e
 bindkey '^S' autosuggest-accept
 
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
+
 if [[ "$(uname)" == "Darwin" ]]; then
     export CLICOLOR=1
 fi
