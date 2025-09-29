@@ -108,19 +108,13 @@ if [ -e ~/.vim/autoload/plug.vim ]; then
 else
     echo "Installing Vim Plug"
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    https://raw.githubusercontent.com/junegunn/vim-plug/baa66bcf349a6f6c125b0b2b63c112662b0669e1/plug.vim
     echo "Plug installed!"
 fi
 
 echo "Installing Vim Plug plugins..."
 
-vim -n -Es -i NONE -u ~/.vimrc -U NONE \
-  -V1/home/vscode/vim-plug.log \
-  +'let g:plug_window="noautocmd enew"' \
-  +'let g:plug_pwindow="noautocmd enew"' \
-  +'PlugClean!' \
-  +'PlugInstall --sync' \
-  +qa
+vim -es -u .vimrc -i NONE -c "PlugInstall" -c "qa"
 
 echo "Vim plug plugins successfully installed!"
 

@@ -138,11 +138,6 @@ set background=dark
 " Enable syntax highlighting
 syntax on
 
-" Apply the Solarized color scheme
-if !empty(glob('~/.vim/plugged/vim-colors-solarized/colors/solarized.vim'))
-  silent! colorscheme solarized
-endif
-
 " === Spell Checking ===
 " Enable spell check for English (US)
 set spelllang=en_us
@@ -174,6 +169,11 @@ endif
 " Workaround for Solarized color issues in iTerm2
 set background=dark
 let g:solarized_termtrans = 1
+
+" Apply the Solarized color scheme
+if !empty(glob('~/.vim/plugged/vim-colors-solarized/colors/solarized.vim'))
+  colorscheme solarized
+endif
 
 " === Local Config Support ===
 " Source additional settings from ~/.local.vimrc if it exists
