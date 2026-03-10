@@ -36,7 +36,9 @@ if [[ "$(uname)" == "Darwin" ]]; then
     export CLICOLOR=1
 fi
 
-eval "$(~/.starship/starship init zsh)"
+if [ -x ~/.starship/starship ]; then
+    eval "$(~/.starship/starship init zsh)"
+fi
 
 # History settings
 

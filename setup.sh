@@ -114,7 +114,12 @@ fi
 
 echo "Installing Vim Plug plugins..."
 
-vim -es -u .vimrc -i NONE -c "PlugInstall" -c "qa"
+vim -n -Es -i NONE -u ~/.vimrc -U NONE \
+  +'let g:plug_window="noautocmd enew"' \
+  +'let g:plug_pwindow="noautocmd enew"' \
+  +'PlugClean!' \
+  +'PlugInstall --sync' \
+  +qa
 
 echo "Vim plug plugins successfully installed!"
 
