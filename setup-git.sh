@@ -54,7 +54,7 @@ git config --global alias.bd "branch -d"
 git config --global alias.bdm "!git branch --merged | egrep -v '^\*|main|prod' | xargs -n 1 git branch -d"
 # 'bdm' deletes all merged branches except for 'main' and 'prod'.
 
-git config --global alias.bds "!git checkout -q main && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=\$(git merge-base main \$branch) && [[ \$(git cherry main \$(git commit-tree \$(git rev-parse \$branch\\^{tree}) -p \$mergeBase -m _)) == \"-\"* ]] && git branch -D \$branch; done"
+git config --global alias.bds '!git checkout -q main && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base main $branch) && [ "$(git cherry main $(git commit-tree $(git rev-parse $branch\^{tree}) -p $mergeBase -m _) | cut -c1)" = "-" ] && git branch -D $branch; done'
 # 'bds' force-deletes all branches that have been fully merged into 'main'.
 
 git config --global alias.hist "log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short"
