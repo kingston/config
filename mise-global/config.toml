@@ -21,6 +21,7 @@ shellcheck = "0.11.0"
 [settings]
 idiomatic_version_file_enable_tools = []
 minimum_release_age="3d"
+paranoid = true
 
 [settings.npm]
 package_manager="pnpm"
