@@ -1,8 +1,3 @@
-# Tool versions (languages and CLIs) are managed by mise: ~/.config/mise/config.toml
-if command -v mise >/dev/null 2>&1; then
-    eval "$(mise activate zsh)"
-fi
-
 # Add search additions
 
 alias s="~/scripts/common/search.sh"
@@ -50,3 +45,9 @@ setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history
 setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
 setopt APPEND_HISTORY            # append to history file
 setopt HIST_NO_STORE             # Don't store history commands
+
+# Tool versions (languages and CLIs) are managed by mise: ~/.config/mise/config.toml
+# Keep this last so mise's tool paths come before anything else added to PATH.
+if command -v mise >/dev/null 2>&1; then
+    eval "$(mise activate zsh)"
+fi
