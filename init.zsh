@@ -6,6 +6,9 @@ alias si="~/scripts/common/searchi.sh"
 # Eternal Terminal connection
 alias etc="~/scripts/common/et-connect.sh"
 
+# Pull the default branch and sync deps (global mise task: mise-global/tasks/refresh)
+alias refresh="mise run refresh"
+
 source ~/.zplug/init.zsh
 
 zplug "zsh-users/zsh-syntax-highlighting", at:e0165eaa730dd0fa32, defer:2

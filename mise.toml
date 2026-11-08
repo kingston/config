@@ -6,6 +6,8 @@
 description = "Copy this machine's config into the config repo"
 run = '''
 cp ~/.config/mise/config.toml mise-global/config.toml
+mkdir -p mise-global/tasks
+[ -d ~/.config/mise/tasks ] && cp -R ~/.config/mise/tasks/. mise-global/tasks/
 brew bundle dump --file=Brewfile --force
 git status --short
 '''
@@ -14,6 +16,7 @@ git status --short
 description = "Show repo vs machine diff, then apply only if approved"
 run = '''
 diff -u ~/.config/mise/config.toml mise-global/config.toml || true
+diff -ruN ~/.config/mise/tasks mise-global/tasks || true
 brew bundle check --file=Brewfile --verbose || true
 git log -3 --stat -- Brewfile mise-global/ mise.toml
 echo "Review Brewfile itself before approving; it runs as Ruby."
@@ -21,10 +24,12 @@ read -r -p "Apply these changes? [y/N] " ok
 [ "$ok" = "y" ] || { echo "Aborted."; exit 1; }
 mkdir -p ~/.config/mise
 cp mise-global/config.toml ~/.config/mise/config.toml
+mkdir -p ~/.config/mise/tasks
+cp -R mise-global/tasks/. ~/.config/mise/tasks/
 brew bundle install --file=Brewfile
 mise install
 '''
 
 [tasks.lint]
 description = "Run ShellCheck on the repo's shell scripts"
-run = "shellcheck -x *.sh scripts/*.sh"
+run = "shellcheck -x *.sh scripts/*.sh mise-global/tasks/*"
