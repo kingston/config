@@ -1,0 +1,26 @@
+[tools]
+# Languages
+node = "24"
+python = "3.13"
+ruby = "3.4"
+go = "1.27"
+deno = "2"
+
+# Package Managers
+pnpm = "12"
+uv = "latest"
+
+# CLI utilities
+"awscli" = "2"
+sops = "3"
+age = "latest"
+ast-grep = "latest"
+"npm:actions-up" = "1.21.0"
+
+[settings]
+idiomatic_version_file_enable_tools = []
+minimum_release_age="3d"
+
+[settings.npm]
+package_manager="pnpm"
+

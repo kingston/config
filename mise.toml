@@ -1,0 +1,26 @@
+# Repo tasks only. Keep [tools] and [settings] out of this file: trusting it
+# (`mise trust`) should only expose these tasks, never change tool versions.
+# The global config lives in mise-global/config.toml. Tasks run from the repo root.
+
+[tasks."dotfiles:export"]
+description = "Copy this machine's config into the config repo"
+run = '''
+cp ~/.config/mise/config.toml mise-global/config.toml
+brew bundle dump --file=Brewfile --force
+git status --short
+'''
+
+[tasks."dotfiles:import"]
+description = "Show repo vs machine diff, then apply only if approved"
+run = '''
+diff -u ~/.config/mise/config.toml mise-global/config.toml || true
+brew bundle check --file=Brewfile --verbose || true
+git log -3 --stat -- Brewfile mise-global/ mise.toml
+echo "Review Brewfile itself before approving; it runs as Ruby."
+read -r -p "Apply these changes? [y/N] " ok
+[ "$ok" = "y" ] || { echo "Aborted."; exit 1; }
+mkdir -p ~/.config/mise
+cp mise-global/config.toml ~/.config/mise/config.toml
+brew bundle install --file=Brewfile
+mise install
+'''

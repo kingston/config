@@ -1,11 +1,7 @@
-if [ -n "${SHOW_TMUX_WARNING+x}" ]; then
-    echo "Warning: This instance is not running in a tmux instance!"
-    echo "If you wish to do so, run tmux."
+# Tool versions (languages and CLIs) are managed by mise: ~/.config/mise/config.toml
+if command -v mise >/dev/null 2>&1; then
+    eval "$(mise activate zsh)"
 fi
-
-# TMux shortcut scripts
-alias m="~/scripts/common/tmuxer.sh"
-alias j="~/scripts/common/untmux.sh"
 
 # Add search additions
 
@@ -36,8 +32,9 @@ if [[ "$(uname)" == "Darwin" ]]; then
     export CLICOLOR=1
 fi
 
-if [ -x ~/.starship/starship ]; then
-    eval "$(~/.starship/starship init zsh)"
+# Starship prompt (installed via Homebrew, see Brewfile)
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init zsh)"
 fi
 
 # History settings

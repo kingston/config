@@ -194,11 +194,9 @@ git -C ~/.zplug checkout ac6c2a3e9eea6a488d96d98c752ef887e7d5aae3
 # Check if the .zshrc file already contains the source line
 upsert_config_init ~/.zshrc "$SCRIPT_DIR/init.zsh"
 
-# Install Starship
-if [ ! -d ~/.starship ]; then
-    echo "Installing Starship prompt..."
-    mkdir ~/.starship
-    curl -sL --proto-redir -all,https https://starship.rs/install.sh | sh -s -- --yes --bin-dir ~/.starship
+# Starship is installed via Homebrew (see Brewfile)
+if ! command_exists starship; then
+    echo "Starship not found. Run: brew bundle --file=$SCRIPT_DIR/Brewfile"
 fi
 
 echo "Checking if any zsh plugins needs install..."
@@ -209,6 +207,22 @@ if [ ! -d ~/.config ]; then
 fi
 
 link_to_home .config/starship.toml
+
+## mise Configuration
+## ==================
+
+echo ""
+print_bold "Setting up mise configuration..."
+
+mkdir -p ~/.config/mise
+
+# Copied rather than symlinked so repo changes never take effect without review
+if [ ! -e ~/.config/mise/config.toml ]; then
+    cp "$SCRIPT_DIR/mise-global/config.toml" ~/.config/mise/config.toml
+    echo "Copied mise config to ~/.config/mise/config.toml"
+else
+    echo "~/.config/mise/config.toml already exists. To apply repo changes, run: cd $SCRIPT_DIR && mise trust && mise run dotfiles:import"
+fi
 
 ## Bash Configuration
 ## ==================
@@ -243,6 +257,5 @@ print_bold "Done setting up!"
 
 echo ""
 echo "Be sure to enable xterm-256color in terminal settings if you are ssh'ing in"
-echo "And also, install dircolors for solarized, e.g. seebi/dircolors-solarized"
-echo "Also, symlink .tmux.conf to home if you want tmux settings"
+echo "Install tools with: brew bundle --file=$SCRIPT_DIR/Brewfile && mise install"
 echo ""

@@ -19,3 +19,5 @@ Session.vim
 
 # Aider ignores
 .aider.*
+
+**/.claude/.cc-writes/
