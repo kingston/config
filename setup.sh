@@ -221,7 +221,7 @@ if [ ! -e ~/.config/mise/config.toml ]; then
     cp "$SCRIPT_DIR/mise-global/config.toml" ~/.config/mise/config.toml
     echo "Copied mise config to ~/.config/mise/config.toml"
 else
-    echo "~/.config/mise/config.toml already exists. To apply repo changes, run: cd $SCRIPT_DIR && mise trust && mise run dotfiles:import"
+    echo "$HOME/.config/mise/config.toml already exists. To apply repo changes, run: cd $SCRIPT_DIR && mise trust && mise run dotfiles:import"
 fi
 
 ## Bash Configuration
@@ -240,11 +240,12 @@ link_to_home .inputrc
 echo ""
 print_bold "Setting up Git configuration..."
 
-SETUP_CFG=`dirname $0`/setup.cfg
-if [ -f $SETUP_CFG ]; then
-    source $SETUP_CFG
+SETUP_CFG="$SCRIPT_DIR/setup.cfg"
+if [ -f "$SETUP_CFG" ]; then
+    # shellcheck source=setup.cfg.template
+    source "$SETUP_CFG"
     echo "Setting up Git..."
-    `dirname $0`/setup-git.sh "$GIT_NAME" "$GIT_EMAIL"
+    "$SCRIPT_DIR/setup-git.sh" "$GIT_NAME" "$GIT_EMAIL"
 else
     echo "No configuration file (setup.cfg) found.  Please set up Git manually."
 fi

@@ -8,7 +8,7 @@ E_BADARGS=65
 
 if [ $# -lt $EXPECTED_ARGS ]
 then
-  echo "Usage: `basename $0` {query string}"
+  echo "Usage: $(basename "$0") {query string}"
   exit $E_BADARGS
 fi
 

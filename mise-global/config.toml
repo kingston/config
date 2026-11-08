@@ -16,6 +16,7 @@ sops = "3"
 age = "latest"
 ast-grep = "latest"
 "npm:actions-up" = "1.21.0"
+shellcheck = "0.11.0"
 
 [settings]
 idiomatic_version_file_enable_tools = []

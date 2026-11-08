@@ -3,13 +3,14 @@
 # Parameter checking
 
 USERNAME_ARGS_NUMBER=2
+E_BADARGS=65
 
-ABS_PATH=$(cd ${0%/*} && echo $PWD/${0##*/})
-SCRIPT_DIR=`dirname "$ABS_PATH"`
+ABS_PATH=$(cd "${0%/*}" && echo "$PWD/${0##*/}")
+SCRIPT_DIR=$(dirname "$ABS_PATH")
 
 if [ $# -ne $USERNAME_ARGS_NUMBER ] && [ $# -ne 0 ]; then
-    echo Usage: $0 [username] [email]
-    exit $E_BADARGS
+    echo "Usage: $0 [username] [email]"
+    exit "$E_BADARGS"
 fi
 
 # Sets up Git
@@ -54,6 +55,7 @@ git config --global alias.bd "branch -d"
 git config --global alias.bdm "!git branch --merged | egrep -v '^\*|main|prod' | xargs -n 1 git branch -d"
 # 'bdm' deletes all merged branches except for 'main' and 'prod'.
 
+# shellcheck disable=SC2016 # single quotes are intentional; git expands this alias later
 git config --global alias.bds '!git checkout -q main && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base main $branch) && [ "$(git cherry main $(git commit-tree $(git rev-parse $branch\^{tree}) -p $mergeBase -m _) | cut -c1)" = "-" ] && git branch -D $branch; done'
 # 'bds' force-deletes all branches that have been fully merged into 'main'.
 
@@ -85,6 +87,6 @@ git config --global --replace-all core.pager "less -F -X"
 if [ -L ~/.global_ignore ]; then
     rm -f ~/.global_ignore
 fi
-ln -s $SCRIPT_DIR/.global_ignore ~/.global_ignore
+ln -s "$SCRIPT_DIR/.global_ignore" ~/.global_ignore
 
 echo "Successfully updated Git settings!"

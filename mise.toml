@@ -24,3 +24,7 @@ cp mise-global/config.toml ~/.config/mise/config.toml
 brew bundle install --file=Brewfile
 mise install
 '''
+
+[tasks.lint]
+description = "Run ShellCheck on the repo's shell scripts"
+run = "shellcheck -x *.sh scripts/*.sh"
